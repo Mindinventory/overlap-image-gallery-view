@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Overlap RecyclerView Sample</string>
+    <string name="animation_type">Animation Type</string>
+    <string name="orientation">Orientation</string>
+</resources>
