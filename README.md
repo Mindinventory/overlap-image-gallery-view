@@ -8,7 +8,7 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
 
 ### Screenshot
 
-![video](/media/swipe_animation.mp4)
+[![Watch the video](https://github.com/Mindinventory/OverlapImageGalleryView/blob/master/media/swipe_animation.mp4)
 
 
 ### Key features
