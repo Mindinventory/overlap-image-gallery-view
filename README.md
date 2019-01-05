@@ -6,9 +6,9 @@
 OverlapImageGalleryView is a flexible library which helps you to create overlapping images gallery in your android Application. You can easily integrate it with the most popular image loading libraries such as Picasso, Glide and Fresco.
 
 
-### Screenshot
+### Preview
 
-[![Watch the video](https://github.com/Mindinventory/OverlapImageGalleryView/blob/master/media/swipe_animation.mp4)
+![image](/media/AnimOverlapImageGalleyView.gif)
 
 
 ### Key features
