@@ -8,7 +8,7 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
 
 ### Screenshot
 
-![image](/media/AnimOverlapImageGalleyView.gif)
+![video](/media/swipe_animation.mp4)
 
 
 ### Key features
@@ -74,6 +74,8 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
 * CircleImageView -> implementation 'de.hdodenhof:circleimageview:2.2.0'
 * Glide -> implementation 'com.github.bumptech.glide:glide:4.8.0'
 
+### Dribbble
+https://dribbble.com/shots/5790365-Magnetic-Swipe-Animation-code
 
 # LICENSE!
 
