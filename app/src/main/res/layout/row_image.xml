@@ -9,10 +9,10 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
+        app:civ_circle_background_color="@android:color/darker_gray"
         app:civ_border_color="#ffffff"
         app:civ_border_width="2dp"
         android:layout_width="@dimen/image_size"
         android:layout_height="@dimen/image_size"
-        android:layout_centerInParent="true"
-        tools:src="@mipmap/ic_launcher" />
+        android:layout_centerInParent="true" />
 </RelativeLayout>
