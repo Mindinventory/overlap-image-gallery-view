@@ -71,7 +71,6 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
 
 ```
 #### Other lib which we have used here
-* CircleImageView -> implementation 'de.hdodenhof:circleimageview:2.2.0'
 * Glide -> implementation 'com.github.bumptech.glide:glide:4.8.0'
 
 ### Dribbble
