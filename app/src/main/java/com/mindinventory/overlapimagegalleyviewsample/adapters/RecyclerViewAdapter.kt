@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
 import com.bumptech.glide.request.RequestOptions
 import com.mindinventory.overlapimagegalleyviewsample.models.OverlapImageModel
 import com.mindinventory.overlaprecyclerview.R
@@ -41,19 +42,6 @@ class RecyclerViewAdapter(private var mContext: Context, private val listener: O
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private var requestOptions: RequestOptions? = null
-
-        /**
-         * init request option for glide
-         */
-        private fun getGlideRequestOptions(): RequestOptions {
-            if (requestOptions == null) {
-                requestOptions = RequestOptions()
-                requestOptions?.error(R.mipmap.ic_launcher)
-                requestOptions?.placeholder(R.mipmap.ic_launcher)
-            }
-            return requestOptions!!
-        }
 
         /**
          * bind model data to item
@@ -75,11 +63,8 @@ class RecyclerViewAdapter(private var mContext: Context, private val listener: O
 
 
             } else {
-
-                //----load image
-                Glide.with(mContext)
-                        .load(mImageModel.imageUrl)
-                        .apply(getGlideRequestOptions())
+                Glide.with(mContext).load(mImageModel.imageUrl)
+                        .apply(RequestOptions.circleCropTransform().priority(Priority.HIGH))
                         .into(itemView.imageView)
 
             }

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/image_size"
     android:layout_height="@dimen/image_size"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:animateLayoutChanges="true">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/imageView"
-        app:civ_circle_background_color="@android:color/darker_gray"
-        app:civ_border_color="#ffffff"
-        app:civ_border_width="2dp"
+        android:background="@drawable/shape_circle"
+        android:padding="2dp"
         android:layout_width="@dimen/image_size"
         android:layout_height="@dimen/image_size"
         android:layout_centerInParent="true" />
