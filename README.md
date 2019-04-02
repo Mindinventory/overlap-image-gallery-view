@@ -1,5 +1,5 @@
 # OverlapImageGalleryView
-
+[![](https://jitpack.io/v/Mindinventory/OverlapImageGalleryView.svg)](https://jitpack.io/#Mindinventory/OverlapImageGalleryView)
 
 ## Overview
 
@@ -78,7 +78,7 @@ https://dribbble.com/shots/5790365-Magnetic-Swipe-Animation-code
 
 # LICENSE!
 
-Map interaction prototype is [MIT-licensed](/LICENSE).
+OverlapImageGalleryView is [MIT-licensed](/LICENSE).
 
 # Let us know!
 We’d be really happy if you send us links to your projects where you use our component. Just send an email to sales@mindinventory.com And do let us know if you have any questions or suggestion regarding our work.
