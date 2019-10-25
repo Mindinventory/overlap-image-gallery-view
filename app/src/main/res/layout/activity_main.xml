@@ -47,16 +47,14 @@
             android:layout_height="wrap_content" />
     </FrameLayout>
 
-
-
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_marginTop="40dp"
-        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:clipToPadding="false"
         android:orientation="horizontal"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/row_image" />
 
 </LinearLayout>

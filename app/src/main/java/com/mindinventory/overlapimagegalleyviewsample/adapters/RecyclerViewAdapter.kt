@@ -1,30 +1,28 @@
 package com.mindinventory.overlapimagegalleyviewsample.adapters
 
-import android.content.Context
 import android.graphics.Color
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.request.RequestOptions
 import com.mindinventory.overlapimagegalleyviewsample.models.OverlapImageModel
 import com.mindinventory.overlaprecyclerview.R
 import com.mindinventory.overlaprecylcerview.adapters.OverlapRecyclerViewAdapter
-import com.mindinventory.overlaprecylcerview.listeners.OverlapRecyclerViewClickListener
 import com.mindinventory.overlaprecylcerview.utils.TextDrawable
 import kotlinx.android.synthetic.main.row_image.view.*
 
-
-class RecyclerViewAdapter(private var mContext: Context, private val listener: OverlapRecyclerViewClickListener,
-                          overlapLimit: Int, overlapWidth: Int) : OverlapRecyclerViewAdapter<OverlapImageModel, RecyclerViewAdapter.CustomViewHolder>(overlapLimit, overlapWidth) {
-
+class RecyclerViewAdapter(
+        overlapLimit: Int,
+        overlapWidth: Int
+) : OverlapRecyclerViewAdapter<OverlapImageModel, RecyclerViewAdapter.CustomViewHolder>(overlapLimit, overlapWidth) {
 
     private val TAG = RecyclerViewAdapter::class.java.simpleName
 
     override fun createItemViewHolder(parent: ViewGroup): CustomViewHolder {
-        val view = LayoutInflater.from(mContext).inflate(R.layout.row_image, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.row_image, parent, false)
         return CustomViewHolder(view)
     }
 
@@ -41,7 +39,6 @@ class RecyclerViewAdapter(private var mContext: Context, private val listener: O
     }
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
 
         /**
          * bind model data to item
@@ -63,7 +60,7 @@ class RecyclerViewAdapter(private var mContext: Context, private val listener: O
 
 
             } else {
-                Glide.with(mContext).load(mImageModel.imageUrl)
+                Glide.with(itemView.imageView.context).load(mImageModel.imageUrl)
                         .apply(RequestOptions.circleCropTransform().priority(Priority.HIGH))
                         .into(itemView.imageView)
 
