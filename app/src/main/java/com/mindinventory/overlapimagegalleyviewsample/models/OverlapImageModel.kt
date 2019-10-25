@@ -1,5 +1,3 @@
 package com.mindinventory.overlapimagegalleyviewsample.models
 
-class OverlapImageModel {
-    var imageUrl: String? = null
-}
+data class OverlapImageModel(val imageUrl: String)

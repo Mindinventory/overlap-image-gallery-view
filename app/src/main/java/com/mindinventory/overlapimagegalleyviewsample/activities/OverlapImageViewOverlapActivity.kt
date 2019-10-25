@@ -1,12 +1,12 @@
 package com.mindinventory.overlapimagegalleyviewsample.activities
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.util.TypedValue
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mindinventory.overlapimagegalleyviewsample.adapters.CustomSpinnerAdapter
 import com.mindinventory.overlapimagegalleyviewsample.adapters.RecyclerViewAdapter
 import com.mindinventory.overlapimagegalleyviewsample.models.OverlapImageModel
@@ -17,21 +17,23 @@ import com.mindinventory.overlaprecylcerview.animations.OverlapRecyclerViewAnima
 import com.mindinventory.overlaprecylcerview.listeners.OverlapRecyclerViewClickListener
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class OverlapImageViewOverlapActivity : AppCompatActivity(), OverlapRecyclerViewClickListener {
 
-
     //------limit number of visibleItems to be overlapped
-    private val numberOfItemToBeOverlapped = 20
+    private val numberOfItemToBeOverlapped = 10
 
     //------set value of item overlapping
     private val overlapWidth = -12f
 
     //------init RecyclerView adapter
-    private val mAdapter by lazy {
-        RecyclerViewAdapter(this, this, numberOfItemToBeOverlapped,
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, overlapWidth,
-                        resources.displayMetrics).toInt())
+    private val adapter by lazy {
+        RecyclerViewAdapter(numberOfItemToBeOverlapped,
+                TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        overlapWidth,
+                        resources.displayMetrics
+                ).toInt()
+        )
     }
 
     val animationList = arrayListOf(OverlapRecyclerViewAnimation.BOTTOM_UP,
@@ -51,8 +53,8 @@ class OverlapImageViewOverlapActivity : AppCompatActivity(), OverlapRecyclerView
 
         spChooseAnimation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                mAdapter.animationType = animationList[position]
-                mAdapter.notifyDataSetChanged()
+                adapter.animationType = animationList[position]
+                adapter.notifyDataSetChanged()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -74,34 +76,25 @@ class OverlapImageViewOverlapActivity : AppCompatActivity(), OverlapRecyclerView
 
             }
         }
-        //------set up recycler view
-        val layoutManager = LinearLayoutManager(this,
-                LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.layoutManager = layoutManager
-
-
-        recyclerView.addItemDecoration(mAdapter.getItemDecoration())
-        recyclerView.adapter = mAdapter
-        mAdapter.addAnimation = true
-        mAdapter.animationType = OverlapRecyclerViewAnimation.BOTTOM_UP
-        mAdapter.addAll(getDummyArrayList())
-        mAdapter.overlapRecyclerViewClickListener = this
+        recyclerView.addItemDecoration(adapter.getItemDecoration())
+        recyclerView.adapter = adapter
+        adapter.addAnimation = true
+        adapter.animationType = OverlapRecyclerViewAnimation.BOTTOM_UP
+        adapter.addAll(getDummyArrayList())
+        adapter.overlapRecyclerViewClickListener = this
     }
 
     /**
      * addItem dummy data to ArrayList
      */
     private fun getDummyArrayList(): java.util.ArrayList<OverlapImageModel> {
-        val mArrayList = java.util.ArrayList<OverlapImageModel>()
+        val items = java.util.ArrayList<OverlapImageModel>()
 
         //-----fill data in to array list
-        for (i in 0..30) {
-            val imageModel = OverlapImageModel()
-            imageModel.imageUrl = imageURLs[i % imageURLs.size]
-            mArrayList.add(imageModel)
+        for (i in 0..20) {
+            items.add(OverlapImageModel(imageURLs[i % imageURLs.size]))
         }
-
-        return mArrayList
+        return items
     }
 
     override fun onNormalItemClicked(adapterPosition: Int) {

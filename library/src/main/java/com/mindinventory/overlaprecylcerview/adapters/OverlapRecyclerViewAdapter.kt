@@ -1,8 +1,8 @@
 package com.mindinventory.overlaprecylcerview.adapters
 
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.recyclerview.widget.RecyclerView
 import com.mindinventory.overlaprecylcerview.R
 import com.mindinventory.overlaprecylcerview.animations.OverlapRecyclerViewAnimation
 import com.mindinventory.overlaprecylcerview.decoration.OverlapRecyclerViewDecoration
@@ -10,8 +10,10 @@ import com.mindinventory.overlaprecylcerview.listeners.OverlapRecyclerViewClickL
 import java.util.*
 
 
-abstract class OverlapRecyclerViewAdapter<S, T : RecyclerView.ViewHolder?>(private val overlapLimit: Int = 0, private val overlapWidth: Int = 0)
-    : RecyclerView.Adapter<T>() {
+abstract class OverlapRecyclerViewAdapter<S, T : RecyclerView.ViewHolder?>(
+        private var overlapLimit: Int = 0,
+        private val overlapWidth: Int = 0
+) : RecyclerView.Adapter<T>() {
 
     //S = Model , T = RecyclerView.ViewHolder
 
@@ -133,28 +135,30 @@ abstract class OverlapRecyclerViewAdapter<S, T : RecyclerView.ViewHolder?>(priva
     /**
      * add items to list
      */
-    fun addAll(mItemList: ArrayList<S>, clearPrevious: Boolean = false) {
+    fun addAll(items: ArrayList<S>, clearPrevious: Boolean = false) {
         if (clearPrevious) {
             visibleItems.clear()
             notVisibleItems.clear()
         }
 
-        if (mItemList.size > overlapLimit) {
-            for (mImageModel in mItemList) {
-                if (this.visibleItems.size <= overlapLimit) {
-                    this.visibleItems.add(mImageModel)
-                } else {
-                    this.notVisibleItems.add(mImageModel)
-                }
+        if (items.size <= overlapLimit) {
+            overlapLimit = items.size
+        }
+
+        for (mImageModel in items) {
+            if (this.visibleItems.size <= overlapLimit) {
+                this.visibleItems.add(mImageModel)
+            } else {
+                this.notVisibleItems.add(mImageModel)
             }
         }
 
-        this.allItems.addAll(mItemList)
+        this.allItems.addAll(items)
         notifyDataSetChanged()
     }
 
     fun removeItem(pos: Int) {
-        if (pos != -1) {
+        if (pos < 0) {
             visibleItems.removeAt(pos)
             notifyItemRemoved(pos)
         }
@@ -165,7 +169,7 @@ abstract class OverlapRecyclerViewAdapter<S, T : RecyclerView.ViewHolder?>(priva
     }
 
     fun getItemDecoration(): OverlapRecyclerViewDecoration {
-        return OverlapRecyclerViewDecoration( overlapLimit, overlapWidth)
+        return OverlapRecyclerViewDecoration(overlapLimit, overlapWidth)
     }
 
     override fun onViewDetachedFromWindow(holder: T) {
@@ -173,6 +177,4 @@ abstract class OverlapRecyclerViewAdapter<S, T : RecyclerView.ViewHolder?>(priva
         if (addAnimation)
             holder?.itemView?.clearAnimation()
     }
-
-
 }
