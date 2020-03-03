@@ -8,7 +8,7 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
 
 ### Preview
 
-![image](/media/swipeanimation.gif)
+![image](/media/AnimOverlapImageGalleyView.gif)
 
 
 ### Key features
