@@ -18,6 +18,7 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
 * Number of items to show in gallery as overlapped.
 * Different scroll animations.
 * Orientation.
+* Supported androidx
 
 
 # Usage
