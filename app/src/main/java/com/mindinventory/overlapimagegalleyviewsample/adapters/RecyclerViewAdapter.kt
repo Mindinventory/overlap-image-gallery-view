@@ -16,37 +16,28 @@ import kotlinx.android.synthetic.main.row_image.view.*
 
 class RecyclerViewAdapter(
         overlapLimit: Int,
-        overlapWidth: Int
-) : OverlapRecyclerViewAdapter<OverlapImageModel, RecyclerViewAdapter.CustomViewHolder>(overlapLimit, overlapWidth) {
-
-    private val TAG = RecyclerViewAdapter::class.java.simpleName
+        overlapWidthInPercentage: Int
+) : OverlapRecyclerViewAdapter<OverlapImageModel, RecyclerViewAdapter.CustomViewHolder>(overlapLimit, overlapWidthInPercentage) {
 
     override fun createItemViewHolder(parent: ViewGroup): CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.row_image, parent, false)
         return CustomViewHolder(view)
     }
 
-    override fun bindItemViewHolder(holder: CustomViewHolder, position: Int) {
-        val mCurrentImageModel = getVisibleItemAt(position)!!
-
+    override fun bindItemViewHolder(viewHolder: CustomViewHolder, position: Int) {
+        val currentImageModel = getVisibleItemAt(position)!!
         //----bind data to view
-        holder.bind(mCurrentImageModel)
+        viewHolder.bind(currentImageModel)
     }
 
-
-    override fun getItemCount(): Int {
-        return visibleItems.size
-    }
+    override fun getItemCount() = visibleItems.size
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         /**
          * bind model data to item
          */
-        fun bind(mImageModel: OverlapImageModel) {
-
+        fun bind(overlapImageModel: OverlapImageModel) {
             if (isLastVisibleItemItem(adapterPosition)) {
-
                 //----set text drawable to show count on last imageview
                 val text = notVisibleItems.size.toString()
                 val drawable = TextDrawable.builder()
@@ -57,13 +48,11 @@ class RecyclerViewAdapter(
                         .endConfig()
                         .buildRound(text, Color.parseColor("#8FAE5D"))
                 itemView.imageView.setImageDrawable(drawable)
-
-
             } else {
-                Glide.with(itemView.imageView.context).load(mImageModel.imageUrl)
+                Glide.with(itemView.imageView.context)
+                        .load(overlapImageModel.imageUrl)
                         .apply(RequestOptions.circleCropTransform().priority(Priority.HIGH))
                         .into(itemView.imageView)
-
             }
         }
     }

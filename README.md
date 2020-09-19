@@ -42,7 +42,7 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
     Step 2. Add the dependency
     ```groovy
 	    dependencies {
-		    implementation 'com.github.Mindinventory:OverlapImageGalleryView:1.0'
+		    implementation 'com.github.Mindinventory:OverlapImageGalleryView:1.0.2'
 	    }
     ```
 
