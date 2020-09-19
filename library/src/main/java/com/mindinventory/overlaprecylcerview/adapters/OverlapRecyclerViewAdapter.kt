@@ -12,7 +12,7 @@ import java.util.*
 
 abstract class OverlapRecyclerViewAdapter<S, T : RecyclerView.ViewHolder?>(
         private var overlapLimit: Int = 0,
-        private val overlapWidth: Int = 0
+        private val overlapWidthInPercentage: Int = 0
 ) : RecyclerView.Adapter<T>() {
 
     //S = Model , T = RecyclerView.ViewHolder
@@ -169,7 +169,7 @@ abstract class OverlapRecyclerViewAdapter<S, T : RecyclerView.ViewHolder?>(
     }
 
     fun getItemDecoration(): OverlapRecyclerViewDecoration {
-        return OverlapRecyclerViewDecoration(overlapLimit, overlapWidth)
+        return OverlapRecyclerViewDecoration(overlapLimit, overlapWidthInPercentage)
     }
 
     override fun onViewDetachedFromWindow(holder: T) {

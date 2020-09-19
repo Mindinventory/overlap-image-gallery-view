@@ -42,16 +42,16 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
     Step 2. Add the dependency
     ```groovy
 	    dependencies {
-		    implementation 'com.github.Mindinventory:OverlapImageGalleryView:1.0'
+		    implementation 'com.github.Mindinventory:OverlapImageGalleryView:1.0.2'
 	    }
     ```
 
-```java
+```Fragment/Activity
     //------limit number of items to be overlapped     
     private val overlapLimit = 5     
   
-    //------set value of item overlapping     
-    private val overlapWidth = -50
+    //------set value of item overlapping in percentage between 0 to 100
+    private val overlapWidthInPercentage = -50
   
     //------set item decoration for item overlapping
     recyclerView.addItemDecoration(OverlapRecyclerViewDecoration(overlapLimit, overlapWidth))

@@ -1,7 +1,6 @@
 package com.mindinventory.overlapimagegalleyviewsample.activities
 
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -22,21 +21,16 @@ class OverlapImageViewOverlapActivity : AppCompatActivity(), OverlapRecyclerView
     //------limit number of visibleItems to be overlapped
     private val numberOfItemToBeOverlapped = 10
 
-    //------set value of item overlapping
-    private val overlapWidth = -12f
+    //------set value of item overlapping in percentage between 0 to 100
+    private val overlapWidthInPercentage = 50
 
     //------init RecyclerView adapter
     private val adapter by lazy {
-        RecyclerViewAdapter(numberOfItemToBeOverlapped,
-                TypedValue.applyDimension(
-                        TypedValue.COMPLEX_UNIT_DIP,
-                        overlapWidth,
-                        resources.displayMetrics
-                ).toInt()
-        )
+        RecyclerViewAdapter(numberOfItemToBeOverlapped, overlapWidthInPercentage)
     }
 
-    val animationList = arrayListOf(OverlapRecyclerViewAnimation.BOTTOM_UP,
+    val animationList = arrayListOf(
+            OverlapRecyclerViewAnimation.BOTTOM_UP,
             OverlapRecyclerViewAnimation.TOP_BOTTOM,
             OverlapRecyclerViewAnimation.LEFT_RIGHT,
             OverlapRecyclerViewAnimation.RIGHT_LEFT
@@ -46,10 +40,13 @@ class OverlapImageViewOverlapActivity : AppCompatActivity(), OverlapRecyclerView
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mSpinnerAdapter = CustomSpinnerAdapter(this, R.layout.row_spinner_item,
-                R.id.tvTitle, animationList)
+        val spinnerAdapter = CustomSpinnerAdapter(
+                this,
+                R.layout.row_spinner_item,
+                R.id.tvTitle, animationList
+        )
         //select animation type
-        spChooseAnimation.adapter = mSpinnerAdapter
+        spChooseAnimation.adapter = spinnerAdapter
 
         spChooseAnimation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -60,15 +57,22 @@ class OverlapImageViewOverlapActivity : AppCompatActivity(), OverlapRecyclerView
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
-
         }
 
-        spChooseDirection.adapter = ArrayAdapter<String>(this, R.layout.row_spinner_item, R.id.tvTitle, arrayListOf("Left to right", "Right to left"))
+        spChooseDirection.adapter = ArrayAdapter(
+                this,
+                R.layout.row_spinner_item,
+                R.id.tvTitle,
+                arrayListOf("Left to right", "Right to left")
+        )
 
         spChooseDirection.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val layoutManager = LinearLayoutManager(this@OverlapImageViewOverlapActivity,
-                        LinearLayoutManager.HORIZONTAL, position != 0)
+                val layoutManager = LinearLayoutManager(
+                        this@OverlapImageViewOverlapActivity,
+                        LinearLayoutManager.HORIZONTAL,
+                        position != 0
+                )
                 recyclerView.layoutManager = layoutManager
             }
 

@@ -12,7 +12,12 @@ import android.widget.TextView
 import com.mindinventory.overlaprecyclerview.R
 import com.mindinventory.overlaprecylcerview.animations.OverlapRecyclerViewAnimation
 
-class CustomSpinnerAdapter(private val context: Activity, private val resouceId: Int, private val textviewId: Int, list: List<OverlapRecyclerViewAnimation>) : ArrayAdapter<OverlapRecyclerViewAnimation>(context, resouceId, textviewId, list) {
+class CustomSpinnerAdapter(
+        private val context: Activity,
+        private val resouceId: Int,
+        private val textviewId: Int,
+        list: List<OverlapRecyclerViewAnimation>
+) : ArrayAdapter<OverlapRecyclerViewAnimation>(context, resouceId, textviewId, list) {
 
     override fun getDropDownView(position: Int, view: View?, parent: ViewGroup): View {
         var convertView = view
