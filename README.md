@@ -1,8 +1,7 @@
 <a href="https://www.mindinventory.com/?utm_source=gthb&utm_medium=repo&utm_campaign=overlapImageGalleryView"><img src="https://github.com/Sammindinventory/MindInventory/blob/main/Banner.png"></a>
 # OverlapImageGalleryView [![](https://jitpack.io/v/Mindinventory/OverlapImageGalleryView.svg)](https://jitpack.io/#Mindinventory/OverlapImageGalleryView) ![](https://img.shields.io/github/languages/top/Mindinventory/OverlapImageGalleryView) ![](https://img.shields.io/github/license/mindinventory/OverlapImageGalleryView)
 
-## Overview
-
+--
 OverlapImageGalleryView is an android library which provides circular image horizontal list with multiple animations and customization.
 
 ### Preview
