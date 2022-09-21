@@ -12,11 +12,14 @@ import com.mindinventory.overlapimagegalleyviewsample.models.OverlapImageModel
 import com.mindinventory.overlapimagegalleyviewsample.utils.imageURLs
 import com.mindinventory.overlapimagegalleyviewsample.utils.toast
 import com.mindinventory.overlaprecyclerview.R
+import com.mindinventory.overlaprecyclerview.databinding.ActivityMainBinding
 import com.mindinventory.overlaprecylcerview.animations.OverlapRecyclerViewAnimation
 import com.mindinventory.overlaprecylcerview.listeners.OverlapRecyclerViewClickListener
-import kotlinx.android.synthetic.main.activity_main.*
 
 class OverlapImageViewOverlapActivity : AppCompatActivity(), OverlapRecyclerViewClickListener {
+
+    private var _binding : ActivityMainBinding? = null
+    private val binding get() = _binding!!
 
     //------limit number of visibleItems to be overlapped
     private val numberOfItemToBeOverlapped = 10
@@ -38,54 +41,76 @@ class OverlapImageViewOverlapActivity : AppCompatActivity(), OverlapRecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        setAnimationDropDown()
+        setDirectionDropDown()
+    }
+
+    private fun setAnimationDropDown() {
         val spinnerAdapter = CustomSpinnerAdapter(
-                this,
-                R.layout.row_spinner_item,
-                R.id.tvTitle, animationList
+            this,
+            R.layout.row_spinner_item,
+            R.id.tvTitle, animationList
         )
-        //select animation type
-        spChooseAnimation.adapter = spinnerAdapter
+        with(binding)
+        {
+            //select animation type
+            spChooseAnimation.adapter = spinnerAdapter
+            spChooseAnimation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    adapter.animationType = animationList[position]
+                    adapter.notifyDataSetChanged()
+                }
 
-        spChooseAnimation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                adapter.animationType = animationList[position]
-                adapter.notifyDataSetChanged()
-            }
+                override fun onNothingSelected(parent: AdapterView<*>?) {
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
+                }
             }
         }
+    }
 
-        spChooseDirection.adapter = ArrayAdapter(
-                this,
+    private fun setDirectionDropDown() {
+        with(binding){
+            spChooseDirection.adapter = ArrayAdapter(
+                this@OverlapImageViewOverlapActivity,
                 R.layout.row_spinner_item,
                 R.id.tvTitle,
                 arrayListOf("Left to right", "Right to left")
-        )
+            )
 
-        spChooseDirection.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val layoutManager = LinearLayoutManager(
+            spChooseDirection.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val layoutManager = LinearLayoutManager(
                         this@OverlapImageViewOverlapActivity,
                         LinearLayoutManager.HORIZONTAL,
                         position != 0
-                )
-                recyclerView.layoutManager = layoutManager
-            }
+                    )
+                    recyclerView.layoutManager = layoutManager
+                }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
 
+                }
             }
+            recyclerView.addItemDecoration(adapter.getItemDecoration())
+            recyclerView.adapter = adapter
+            adapter.addAnimation = true
+            adapter.animationType = OverlapRecyclerViewAnimation.BOTTOM_UP
+            adapter.addAll(getDummyArrayList())
+            adapter.overlapRecyclerViewClickListener = this@OverlapImageViewOverlapActivity
         }
-        recyclerView.addItemDecoration(adapter.getItemDecoration())
-        recyclerView.adapter = adapter
-        adapter.addAnimation = true
-        adapter.animationType = OverlapRecyclerViewAnimation.BOTTOM_UP
-        adapter.addAll(getDummyArrayList())
-        adapter.overlapRecyclerViewClickListener = this
     }
 
     /**
