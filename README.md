@@ -7,7 +7,7 @@ OverlapImageGalleryView is an android library which provides circular image hori
 ### Preview
 <table>
   <tr>
-    <td><img src="/media/OverlapImageView.png" width=412 height=732></td>
+    <td><img src="/media/OverlapImageViewNew.png" width=412 height=732></td>
     <td><img src="/media/OverlapImageView.gif" width=412 height=732></td>
   </tr>
  </table>
