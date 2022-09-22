@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLabel"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@color/pink"
+            android:fontFamily="@font/lobster_regular"
+            android:gravity="center"
+            android:text="@string/overlay_image_view"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvOrientation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/lobster_regular"
+            android:text="@string/orientation"
+            android:textColor="@color/pink"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabel" />
+
+        <RadioGroup
+            android:id="@+id/rgDirection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrientation">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbLeftToRight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/pink"
+                android:fontFamily="@font/space_grotesk_medium"
+                android:text="@string/left_to_right"
+                android:textColor="@color/pink"
+                android:textSize="16sp" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbRightToLeft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/pink"
+                android:fontFamily="@font/space_grotesk_medium"
+                android:text="@string/right_to_left"
+                android:textColor="@color/pink"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTopBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/lobster_regular"
+            android:text="@string/top_bottom"
+            android:textColor="@color/pink"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rgDirection" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTopBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTopBottom"
+            tools:listitem="@layout/row_image" />
+
+        <View
+            android:id="@+id/viewTopBottom"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/pink_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvTopBottom" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBottomTop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/lobster_regular"
+            android:text="@string/bottom_top"
+            android:textColor="@color/pink"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewTopBottom" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBottomTop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBottomTop"
+            tools:listitem="@layout/row_image" />
+
+        <View
+            android:id="@+id/viewBottomTop"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/pink_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvBottomTop" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLeftRight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/lobster_regular"
+            android:text="@string/left_right"
+            android:textColor="@color/pink"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewBottomTop" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLeftRight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLeftRight"
+            tools:listitem="@layout/row_image" />
+
+        <View
+            android:id="@+id/viewLeftRight"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/pink_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvLeftRight" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRightLeft"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/lobster_regular"
+            android:text="@string/right_left"
+            android:textColor="@color/pink"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewLeftRight" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRightLeft"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRightLeft"
+            tools:listitem="@layout/row_image" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

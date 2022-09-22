@@ -1,5 +1,15 @@
 <resources>
-    <string name="app_name">Overlap RecyclerView Sample</string>
+    <string name="app_name">OverlapImageGalleryView</string>
     <string name="animation_type">Animation Type</string>
     <string name="orientation">Orientation</string>
+    <string name="left_to_right">Left To Right</string>
+    <string name="right_to_left">Right To Left</string>
+    <!--    <string name="overlay_image_view"><u>OverlayImageView</u></string>-->
+    <string name="overlay_image_view">OverlayImageView</string>
+    <string name="top_bottom">Top Bottom</string>
+    <string name="bottom_top">Bottom Top</string>
+    <string name="left_right">Left Right</string>
+    <string name="right_left">Right Left</string>
+
+
 </resources>
