@@ -5,12 +5,7 @@
 OverlapImageGalleryView is an android library which provides circular image horizontal list with multiple animations and customization.
 
 ### Preview
-<table>
-  <tr>
-    <td><img src="/media/OverlapImageGalleryView.png" width=412 height=732></td>
-    <td><img src="/media/OverlapImageGalleryView.gif" width=412 height=732></td>
-  </tr>
- </table>
+![image](/media/OverlapImageGalleryView.gif)
 
 ### Key features
 
