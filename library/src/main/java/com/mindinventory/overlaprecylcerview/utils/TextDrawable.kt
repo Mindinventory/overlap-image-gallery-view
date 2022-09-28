@@ -28,7 +28,7 @@ class TextDrawable(builder: Builder) : ShapeDrawable(builder.shape) {
         radius = builder.radius
 
         // text and color
-        text = if (builder.toUpperCase) builder.text!!.toUpperCase() else builder.text
+        text = if (builder.toUpperCase) builder.text?.uppercase() else builder.text
         color = builder.color
 
         // text paint settings
@@ -180,7 +180,7 @@ class TextDrawable(builder: Builder) : ShapeDrawable(builder.shape) {
         }
 
         override fun borderColor(color: Int): IConfigBuilder {
-            this.borderColor= borderColor
+            this.borderColor= color
             return this
         }
 

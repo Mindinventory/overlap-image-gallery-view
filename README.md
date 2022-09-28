@@ -1,15 +1,11 @@
-# OverlapImageGalleryView
-[![](https://jitpack.io/v/Mindinventory/OverlapImageGalleryView.svg)](https://jitpack.io/#Mindinventory/OverlapImageGalleryView)
+<a href="https://www.mindinventory.com/?utm_source=gthb&utm_medium=repo&utm_campaign=overlapImageGalleryView"><img src="https://github.com/Sammindinventory/MindInventory/blob/main/Banner.png"></a>
+# OverlapImageGalleryView [![](https://jitpack.io/v/Mindinventory/OverlapImageGalleryView.svg)](https://jitpack.io/#Mindinventory/OverlapImageGalleryView) ![](https://img.shields.io/github/languages/top/Mindinventory/OverlapImageGalleryView) ![](https://img.shields.io/github/license/mindinventory/OverlapImageGalleryView)
 
-## Overview
-
-OverlapImageGalleryView is a flexible library which helps you to create overlapping images gallery in your android Application. You can easily integrate it with the most popular image loading libraries such as Picasso, Glide and Fresco.
-
+--
+OverlapImageGalleryView is an android library which provides circular image horizontal list with multiple animations and customization.
 
 ### Preview
-
-![image](/media/AnimOverlapImageGalleyView.gif)
-
+![image](/media/OverlapImageView.gif)
 
 ### Key features
 
@@ -20,32 +16,37 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
 * Orientation.
 * Supported androidx
 
-
-# Usage
-
-* Dependencies
-
-    Step 1. Add the JitPack repository to your build file:
-    
-    Add it in your root build.gradle at the end of repositories:
-
-    ```groovy
-	    allprojects {
-		    repositories {
-			    ...
-			    maven { url 'https://jitpack.io' }
-		    }
+## Usage
+### Dependencies
+- **Step 1: Add the JitPack repository in your project build.gradle file**
+```bash
+allprojects {
+	    repositories {
+		    ...
+		    maven { url 'https://jitpack.io' }
 	    }
-    ```
+    }
+```
+**or**
 
+**If Android studio version is Arctic Fox or higher then add it in your settings.gradle**
 
-    Step 2. Add the dependency
-    ```groovy
-	    dependencies {
-		    implementation 'com.github.Mindinventory:OverlapImageGalleryView:1.0.2'
-	    }
-    ```
-
+```bash
+dependencyResolutionManagement {
+  		repositories {
+       		...
+       		maven { url 'https://jitpack.io' }
+   		}
+   }
+``` 
+- **Step 2: Add the dependency in your app module build.gradle file**
+```bash
+dependencies {
+		    ...
+	        implementation 'com.github.Mindinventory:OverlapImageGalleryView:x.x.x'
+	}
+```
+### Implementation
 ```Fragment/Activity
     //------limit number of items to be overlapped     
     private val overlapLimit = 5     
@@ -68,18 +69,22 @@ OverlapImageGalleryView is a flexible library which helps you to create overlapp
         toast(this,"Numbered item clicked >> $adapterPosition")
         // Here you can add remaining items in list or open seperate screen.
     }
-    
-
 ```
-#### Other lib which we have used here
+
+### Library used
 * Glide -> implementation 'com.github.bumptech.glide:glide:4.8.0'
 
-### Dribbble
+### Dribble
 https://dribbble.com/shots/5790365-Magnetic-Swipe-Animation-code
 
-# LICENSE!
+## LICENSE!
 
 OverlapImageGalleryView is [MIT-licensed](/LICENSE).
 
-# Let us know!
-We’d be really happy if you send us links to your projects where you use our component. Just send an email to sales@mindinventory.com And do let us know if you have any questions or suggestion regarding our work.
+## Let us know!
+If you use our open-source libraries in your project, please make sure to credit us and Give a star to www.mindinventorycom
+
+<p><h4>Please feel free to use this component and Let us know if you are interested to building Apps or Designing Products.</h4>
+<a href="https://www.mindinventory.com/contact-us.php?utm_source=gthb&utm_medium=repo&utm_campaign=overlapImageGalleryView">
+<img src="https://github.com/Sammindinventory/MindInventory/blob/main/hirebutton.png" width="203" height="43"  alt="app development">
+</a>
